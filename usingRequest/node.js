@@ -7,13 +7,5 @@ request("http://www.google.com", function(err, response, body) {
   }
 
   console.log("Response Status Code:", response.statusCode);
-  printExampleHTML(body);
+  console.log(body);
 });
-
-
-
-
-
-function printExampleHTML(callback) {
-  console.log(callback);
-}
