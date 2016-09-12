@@ -5,23 +5,20 @@ var requestOptions = {
   path: "/"
 };
 
-http.get(requestOptions, (response) => {    // HTTP Response Callback
+function printExampleHTML(callback){
+
+  http.get(requestOptions, (response) => {    // HTTP Response Callback
 
   response.setEncoding("utf8");             // Use UTF-8 encoding
 
-  response.on("data", function(data) {           // On Data Received
-    console.log("Chunk Received. Length:", data.length);
-    printExampleHTML(data);
+  response.on("data", callback);
+
   });
 
-  response.on("end", function() {                // On Data Completed
-    console.log("Response stream complete.");
-  });
-
-});
-
-
-
-function printExampleHTML(callback){
-  console.log(callback);
 }
+
+function callback(data){
+  console.log(data)
+}
+
+printExampleHTML(callback);

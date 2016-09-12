@@ -1,11 +1,25 @@
 var request = require("request");
 
-request("http://www.google.com", function(err, response, body) {
 
-  if (err) {
-    throw err;
-  }
+function printExampleHTML(callback) {
 
-  console.log("Response Status Code:", response.statusCode);
-  console.log(body);
-});
+
+  request("http://www.google.com", function(err, response, body){
+
+    if (err) {
+      throw err;
+    }
+
+    console.log("Response Status Code:", response.statusCode);
+    callback(body);
+
+  });
+
+}
+
+
+function printBody(body){
+  console.log(body)
+}
+
+printExampleHTML(printBody);
